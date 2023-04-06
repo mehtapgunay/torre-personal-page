@@ -1,0 +1,139 @@
+<div class="ui container page-container">
+  <div class="ui segment">
+      <div class="ui divided items" *ngIf="(user$ | async) as user">
+          <div class="item">
+              <div>
+                  <img class="ui tiny circular image user-image" [src]="user?.person?.picture">
+              </div>
+              <div class="content">
+                  <a class="header">{{user?.person?.name}}</a>
+                  <div class="description">
+                    <p> {{user?.person?.professionalHeadline}} </p>
+                </div>
+                  <div class="meta">
+                      <span> {{ user?.person?.location?.country }} </span>
+                  </div>
+                  <div class="description highlight-list">
+                    <div class="highlight-item">
+                      <div class="ui labeled button" tabindex="0">
+                        <div class="ui basic button">
+                          <i class="building outline icon"></i> Jobs
+                        </div>
+                        <a class="ui basic left pointing label">
+                          {{ user?.stats?.jobs }}
+                        </a>
+                      </div>
+                    </div>
+                    <div class="highlight-item">
+                      <div class="ui labeled button" tabindex="0">
+                        <div class="ui basic button">
+                          <i class="graduation cap icon"></i> Education
+                        </div>
+                        <a class="ui basic left pointing label">
+                          {{ user?.stats?.education }}
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="highlight-item">
+                      <div class="ui labeled button" tabindex="0">
+                        <div class="ui basic button">
+                          <i class="trophy icon"></i> Awards
+                        </div>
+                        <a class="ui basic left pointing label">
+                          {{ user?.stats?.awards }}
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="highlight-item">
+                      <div class="ui labeled button" tabindex="0">
+                        <div class="ui basic button">
+                          <i class="fork icon"></i> Strengths
+                        </div>
+                        <a class="ui basic left pointing label">
+                          {{ user?.stats?.strengths }}
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="item">
+              <div class="content">
+                  <div class="header"><i class="thumbs up outline icon"></i>Strengths</div>
+                  <div class="description">
+                      <ng-container *ngFor='let strength of user?.strengths'>
+                        <div class="ui label skill-item">
+                        {{ strength?.name}}
+                        </div>
+                      </ng-container>
+                  </div>
+              </div>
+          </div>
+
+          <div class="item">
+            <div class="content">
+                <div class="header"><i class="thumbs up outline icon"></i>Awards</div>
+                <div class="description">
+                    <ng-container *ngFor='let award of user?.awards'>
+                      <div class="skill-item">
+                        <a class="ui teal empty circular label"></a>
+                      {{ award?.name}}
+                      </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+          <div class="item">
+            <div class="content">
+                <div class="header"><i class="hand point right outline icon"></i>Experiences</div>
+                <div class="description">
+                      <div class="ui list">
+                        <a class="item list-item" *ngFor='let experience of user?.experiences'>
+                          <ng-container *ngIf="experience?.organizations && experience?.organizations.length">
+                            <img class="ui avatar image" [src]="experience?.organizations[0].picture"  onError="this.src='https://cdn-icons-png.flaticon.com/512/3616/3616423.png'"/>
+                          </ng-container>
+        
+                          <div class="content">
+                            <div class="header">{{ experience?.name }}</div>
+                            <div class="description">
+                                {{experience?.organizations && experience?.organizations.length > 0 ? experience?.organizations[0].name : ''}}, 
+                                {{ experience?.fromMonth}} {{ experience?.fromYear}} - {{ experience?.toMonth}} {{ experience?.toYear}}
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="content">
+                <div class="header"><i class="hand point right outline icon"></i>Education</div>
+                <div class="description">
+                      <div class="ui list">
+                        <a class="item list-item" *ngFor='let education of user?.education'>
+                          <ng-container *ngIf="education?.organizations && education?.organizations.length">
+                            <img class="ui avatar image" [src]="education?.organizations[0].picture"  onError="this.src='https://cdn-icons-png.flaticon.com/512/3616/3616423.png'"/>
+                          </ng-container>
+        
+                          <div class="content">
+                            <div class="header">{{ education?.name }}</div>
+                            <div class="description">
+                                {{education?.organizations && education?.organizations.length > 0 ? education?.organizations[0].name : ''}}, 
+                                {{ education?.fromMonth}} {{ education?.fromYear}} - {{ education?.toMonth}} {{ education?.toYear}}, {{ education?.remote ? 'Remote' : 'On Site'}}
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+</div>
