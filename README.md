@@ -1,3 +1,6 @@
+disable cors policy on browser and open github pages link: https://mehtapgunay.github.io/torre-personal-page/
+
+
 # TorrePersonalPage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
