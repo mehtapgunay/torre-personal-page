@@ -65,8 +65,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "torre-personal-page:build:production",
-              "proxyConfig": "proxy-prod.conf.json"
+              "browserTarget": "torre-personal-page:build:production"
             },
             "development": {
               "browserTarget": "torre-personal-page:build:development",

@@ -1,9 +1,0 @@
-{
-  "/api/*": {
-   "target": "https://bio.torre.co",
-   "pathRewrite": { "^/api": "" },
-   "secure": true,
-   "changeOrigin": true,
-   "logLevel": "debug"
-  }
-}
